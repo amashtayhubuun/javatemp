@@ -10,7 +10,7 @@ public class Main {
             for (int i = 0; i < 100; i++) {
                 threadpool.addTask(task);
             }
-            Thread.sleep(5000); // подождем 30 секунд
+            Thread.sleep(5000); // подождем 5 секунд
         } catch (Exception e) {
             System.out.println(e);
         }
