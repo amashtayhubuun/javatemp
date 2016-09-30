@@ -1,18 +1,21 @@
 package ru.homeworks.threadpool;
 
-/**
- * Created by Alexander on 29.09.2016.
- */
+
 public class Main {
     public static void main(String[] args) {
-        Threadpool<Task> threadpool=new Threadpool<>(5);
+        Threadpool<Task> threadpool = new Threadpool<>(25);
+        Task task = new Task();
+        try {
 
-        Task task=new Task();
-        for (int i = 0; i < 10; i++) {
-            threadpool.addTask(task);
+            for (int i = 0; i < 100; i++) {
+                threadpool.addTask(task);
+            }
+            Thread.sleep(5000); // подождем 30 секунд
+        } catch (Exception e) {
+            System.out.println(e);
         }
-
-
-
+        threadpool.stop();
+        System.out.println("-----------");
+        System.out.println("Balance="+task.balance);
     }
 }

@@ -1,12 +1,14 @@
 package ru.homeworks.threadpool;
 
-/**
- * Created by Alexander on 29.09.2016.
- */
 public class Task implements Runnable {
-    int balance=0;
+    Double balance=0.0;
     @Override
     public void run() {
-        System.out.printf("Поток %s начал свою работу.\n",Thread.currentThread().getName());
+
+        synchronized (balance){
+            balance+=100.0;
+            System.out.printf("Поток %s добавил $100. balance=$%f.\n",Thread.currentThread().getName(), balance);
+        }
+
     }
 }
